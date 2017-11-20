@@ -55,15 +55,17 @@ class MyMainViewController: UIViewController,UITableViewDelegate,UITableViewData
         myCell.farsiLable.text   = wordList[indexPath.row].english!
         myCell.englishLable.text = wordList[indexPath.row].farsi!
         
-        
         myCell.favoriteButton.isUserInteractionEnabled = true
-        myCell.favoriteButton.addTarget(self, action: #selector(addF),for: UIControlEvents.touchUpInside)
+        myCell.favoriteButton.tag = indexPath.row
+        myCell.favoriteButton.addTarget(self, action: #selector(addF(_:)),for: UIControlEvents.touchUpInside)
         
         return myCell
     }
     
-    @objc func addF() {
+    @objc func addF(_ sender: UIButton) {
         print("button is clicked")
+        print("Tapped at row \(sender.tag)")
+        print("Favorite word \(wordList[sender.tag])")
     }
     
   
